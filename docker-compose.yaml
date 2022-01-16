@@ -1,0 +1,17 @@
+version: "3.1"
+services:
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: PFxBAeKwGXgKQ7F8wNjXakzdXnzkMYuT
+      MYSQL_DATABASE: db
+      MYSQL_USER: weather-api
+      MYSQL_PASSWORD: 9hbkWNDmyTCXHzp55bDRpX96JyrMb7DE
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql:/var/lib/mysql
+
+volumes:
+  mysql:
