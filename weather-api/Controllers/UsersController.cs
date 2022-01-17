@@ -78,7 +78,8 @@ namespace weather_api.Controllers
         {
             // Error Handling for duplicates username and in general
             byte[] salt = PasswordHasher.CreateSalt();
-            user = PasswordHasher.HashUserPassword(user, salt);
+            string hashed = PasswordHasher.HashPassword(user.Password, salt);
+            user.Password = hashed;
             user.Salt = Convert.ToBase64String(salt);
 
             _context.User.Add(user);

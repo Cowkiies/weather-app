@@ -17,17 +17,17 @@ namespace weather_api.Helpers
             }
             return salt;
         }
-        public static User HashUserPassword(User user, byte[] salt)
-        { 
+        public static string HashPassword(string password, byte[] salt)
+        {
             // derive a 256-bit subkey (use HMACSHA256 with 100,000 iterations)
-            user.Password = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: user.Password,
+            password = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: password,
                 salt: salt,
                 prf: KeyDerivationPrf.HMACSHA256,
                 iterationCount: 100000,
                 numBytesRequested: 256 / 8));
 
-            return user;
+            return password;
         }
     }
 }
