@@ -10,6 +10,9 @@ namespace weather_api.Models
         [MaxLength(32)]
         public string Username { get; set; }
 
-        public string Role { get; set; }
+        public string FirstName { get; set; }
+        public string LastName{ get; set; }
+        public string Email { get; set; }
+
     }
 }

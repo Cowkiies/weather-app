@@ -8,8 +8,8 @@ using weather_api.Data;
 namespace weather_api.Migrations
 {
     [DbContext(typeof(WeatherDbContext))]
-    [Migration("20220116172936_Unique")]
-    partial class Unique
+    [Migration("20220119200928_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,10 +24,16 @@ namespace weather_api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("Email")
                         .HasColumnType("text");
 
-                    b.Property<string>("Role")
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
                         .HasColumnType("text");
 
                     b.Property<string>("Salt")

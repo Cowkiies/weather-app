@@ -1,5 +1,28 @@
+<div>Sign-in</div>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <input type="text" formControlName="username" trim />
-    <input type="password" formControlName="password" trim />
+    <div>
+        <label>username</label>
+        <input type="text" formControlName="username" trim />
+    </div>
+    <div>
+        <label>password</label>
+        <input type="password" formControlName="password" trim />
+    </div>
+    <div>
+        <label>repeatPassword</label>
+        <input type="password" formControlName="repeatPassword" trim />
+    </div>
+    <div>
+        <label>firstName</label>
+        <input type="text" formControlName="firstName" trim />
+    </div>
+    <div>
+        <label>lastName</label>
+        <input type="text" formControlName="lastName" trim />
+    </div>
+    <div>
+        <label>email</label>
+        <input type="text" formControlName="email" trim />
+    </div>
     <button type="submit">submit</button>
 </form>

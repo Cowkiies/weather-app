@@ -22,10 +22,16 @@ namespace weather_api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("Email")
                         .HasColumnType("text");
 
-                    b.Property<string>("Role")
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
                         .HasColumnType("text");
 
                     b.Property<string>("Salt")

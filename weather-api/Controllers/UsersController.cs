@@ -23,9 +23,10 @@ namespace weather_api.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUser()
+        public IQueryable<UserDTO> GetUser()
         {
-            return await _context.User.ToListAsync();
+            return from user in _context.User
+                   select MapFromUserToDTO(user);
         }
 
         // GET: api/Users/5
@@ -74,7 +75,7 @@ namespace weather_api.Controllers
 
         // POST: api/Users
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<UserDTO>> PostUser(User user)
         {
             // Error Handling for duplicates username and in general
             byte[] salt = PasswordHasher.CreateSalt();
@@ -84,8 +85,7 @@ namespace weather_api.Controllers
 
             _context.User.Add(user);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetUser", new { id = user.Id }, MapFromUserToDTO(user));
         }
 
         // DELETE: api/Users/5
@@ -107,6 +107,18 @@ namespace weather_api.Controllers
         private bool UserExists(int id)
         {
             return _context.User.Any(e => e.Id == id);
+        }
+
+        private static UserDTO MapFromUserToDTO(User user)
+        {
+            return new()
+            {
+                Id = user.Id,
+                Username = user.Username,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
+            };
         }
     }
 }

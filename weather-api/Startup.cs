@@ -41,6 +41,7 @@ namespace weather_api
                                   });
             });
             services.AddDbContext<WeatherDbContext>(options => options.UseMySQL(Configuration.GetConnectionString("Default")));
+            services.AddHttpClient();
             services.AddControllers();
         }
 
