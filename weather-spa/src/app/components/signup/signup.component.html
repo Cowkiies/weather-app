@@ -1,0 +1,61 @@
+<div class="flex justify-content-center">
+    <h1>Sign up</h1>
+</div>
+<div class="grid">
+    <div class="col-6 col-offset-3">
+        <p-card>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="grid p-2">
+                    <div class="col-6">
+                        <span>
+                            <label><strong>First name</strong></label>
+                            <input type="text" class="inputfield w-full" pInputText formControlName="firstName" trim>
+                        </span>
+                    </div>
+                    <div class="col-6">
+                        <span>
+                            <label><strong>Last name</strong></label>
+                            <input type="text" class="inputfield w-full" pInputText formControlName="lastName" trim>
+                        </span>
+                    </div>
+                </div>
+                <div class="field p-2">
+                    <span>
+                        <label><strong>Email</strong></label>
+                        <input type="text" class="inputfield w-full" pInputText formControlName="email" trim>
+                    </span>
+                </div>
+                <div class="field p-2">
+                    <span>
+                        <label><strong>Username</strong></label>
+                        <input type="text" class="inputfield w-full" pInputText formControlName="username" trim>
+                    </span>
+                </div>
+                <div class="field pt-2 pr-2 pl-2">
+                    <span>
+                        <label><strong>Password</strong></label>
+                        <input type="password" class="inputfield w-full" pInputText formControlName="password" trim>
+                    </span>
+                    <p-message severity="warn" [escape]="false" text="Password must contains at least: 
+                    <ul>
+                        <li>One uppercase letter</li>
+                        <li>One number</li>
+                        <li>One special character (!@#$%^&*()\-__+.)</li>
+                        <li>8 characters</li>
+                    </ul>"></p-message>
+                </div>
+                <div class="field p-2 pb-4">
+                    <span>
+                        <label><strong>Confirm password</strong></label>
+                        <input type="password" class="inputfield w-full" pInputText formControlName="repeatPassword" trim>
+                    </span>
+                </div>
+                <div class="grid col-12">
+                    <button pButton type="submit" label="Sign up" class="p-button-raised p-button-rounded p-button-primary col-6 col-offset-3 p-fluid" [disabled]="!form.valid"></button>
+                </div>
+            </form>
+        </p-card>
+    </div>
+</div>
+
+<p-toast position="bottom-right"></p-toast>
