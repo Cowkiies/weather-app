@@ -45,10 +45,11 @@ export class ForecastComponent implements OnInit {
         current = deg;
       }
     });
+    current = current === 360 ? 0 : current;
     return current;
   }
 
-  public findBeauortWindForce (force: number = 0): number {
+  public findBeaufortWindForce (force: number = 0): number {
     for (let i = 0; i < this.beaufortIntervals.length; i++) {
       const interval = this.beaufortIntervals[i];
       if (interval[0] <= force && force < interval[1]) {
@@ -56,5 +57,9 @@ export class ForecastComponent implements OnInit {
       }
     }
     return 0;
+  }
+
+  public isNan (value: any): boolean {
+    return isNaN(value);
   }
 }

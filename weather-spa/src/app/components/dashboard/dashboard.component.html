@@ -12,8 +12,10 @@
 <div class="grid col-10 col-offset-1 p-2">
     <p-card class="p-0 pt-3 m-auto w-full">
         <div class="grid col-12">
-            <span class="p-input-icon-left col-6 col-offset-3">
-                <i class="pi pi-search"></i>
+            <h3 class="col-2 mb-0 mt-0 pl-5">
+                {{ weatherData?.timezone }}
+            </h3>
+            <span class="col-6 col-offset-1">
                 <p-autoComplete [(ngModel)]="selectedCity" [suggestions]="filteredCities" inputStyleClass="w-full"
                     field="fullName" [minLength]="3" placeholder="Search for a city" [forceSelection]="true"
                     (completeMethod)="search($event)" (onSelect)="onSelect($event)" [dropdown]="true" dropdownMode="current"

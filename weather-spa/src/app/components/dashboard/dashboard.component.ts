@@ -68,6 +68,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   getWeatherData (lat: number = 51.5, lon: number = -0.12) {
     this.subscriptions.add(
       this.weatherService.getWeatherData(lat, lon).subscribe(data => {
+        this.weatherData = data;
         this.currentWeather = data.current;
         this.oneHourWeather = data.hourly[0];
         this.twoDaysWeather = data.daily[0];

@@ -17,8 +17,9 @@
                         <input type="password" class="inputfield w-full" pInputText formControlName="password" trim> 
                     </span>
                 </div>
-                <div class="grid col-12">
+                <div class="grid col-12 pt-5">
                     <button pButton type="submit" label="Sign in" class="p-button-raised p-button-primary p-button-rounded col-6 col-offset-3 p-fluid" [disabled]="!form.valid"></button>
+                    <span class="w-full text-center pt-2">Don't have an account ? <a href="/signup">Create one</a></span>
                 </div>
             </form>
         </p-card>

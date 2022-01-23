@@ -2,18 +2,47 @@
     <div class="col-7">
         <div class="w-full flex justify-content-between flex-wrap pl-4 pr-4">
             <div>
-                <span class="mb-0 text-7xl font-bold">
-                    {{ isObject(data?.temp) ? $any(data?.temp).min : data?.temp }}°C
-                </span>
+                <div *ngIf="isNan(data?.temp); else elseBlock" class="mb-0 text-4xl font-bold">
+                    <div>
+                        Min: {{ $any(data?.temp).min }}°C
+                    </div>
+                    <div>
+                        Max: {{ $any(data?.temp).max }}°C
+                    </div>
+                </div>
+                <ng-template #elseBlock>
+                    <div class="mb-0 text-7xl font-bold">
+                        {{ data?.temp }}°C
+                    </div>
+                </ng-template>
                 <h3 class="mt-1 font-bold">
                     {{ data ? data.weather[0].main : '' }}
                 </h3>
+                <div>
+                    <div class="text-2xl">
+                        <i class="wi wi-wind-beaufort-{{findBeaufortWindForce(data?.wind_speed)}}"></i>
+                        <span class="font-bold">
+                            Wind:
+                        </span>
+                        <span>
+                            {{ data?.wind_speed }}km/h
+                        </span>
+                        <i class="wi wi-wind towards-{{ closestWindDeg(data?.wind_deg) }}-deg"></i>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
             </div>
 
             <div>
-                <img *ngIf="data && data.weather"
-                    src="http://openweathermap.org/img/wn/{{ data.weather[0].icon }}@2x.png"
-                    alt="{{ data.weather[0].description }}">
+                <div class="text-center">
+                    <img *ngIf="data && data.weather"
+                        src="http://openweathermap.org/img/wn/{{ data.weather[0].icon }}@2x.png"
+                        alt="{{ data.weather[0].description }}">
+                </div>
+                <h3 *ngIf="data && data.weather" class="font-bold mt-0 text-center">{{ data.weather[0].description |
+                    firstCharToUpper }}</h3>
             </div>
         </div>
     </div>
@@ -34,36 +63,3 @@
         </div>
     </div>
 </div>
-<div>
-    <div>
-        <span>wind: <i class="wi wi-wind towards-{{ closestWindDeg(data?.wind_deg) }}-deg"></i></span>
-    </div>
-    <div>
-        <span>
-            <i class="wi wi-wind-beaufort-{{findBeauortWindForce(data?.wind_speed)}}"></i> {{ data?.wind_speed }}km/h
-        </span>
-    </div>
-</div>
-<!-- <div>
-    
-    sunrise: 
-</div>
-
-<div>
-</div>
-
-<div>
-   temp: 
-</div>
-
-<div>
-    forecast: {{ data ? data.weather[0].main  : '' }}
-</div>
-
-<div>
-    pressure: {{ data?.pressure }}
-</div>
-
-<div>
-    humidity: {{ data?.humidity }}%
-</div> -->

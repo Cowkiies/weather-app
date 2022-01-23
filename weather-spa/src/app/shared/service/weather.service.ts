@@ -16,6 +16,8 @@ export class WeatherService {
     return this.httpClient.get<Forecast>(`${environment.API_URL}/api/weather?lat=${lat}&lon=${lon}`)
       .pipe(
         map((data: Forecast) => {
+          data.hourly[1].sunrise = data.current.sunrise;
+          data.hourly[1].sunset = data.current.sunset;
           return {
             ...data,
             hourly: [data.hourly[1]],
