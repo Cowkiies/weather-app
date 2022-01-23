@@ -9,6 +9,8 @@ import { ToastModule } from 'primeng/toast';
 import { MenubarModule } from 'primeng/menubar';
 import { TabViewModule } from 'primeng/tabview';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+
 @NgModule({
   exports: [
     InputTextModule,
@@ -20,7 +22,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     ToastModule,
     MenubarModule,
     TabViewModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    ProgressSpinnerModule
   ]
 })
 export class PrimengModule { }

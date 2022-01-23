@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription, timer } from 'rxjs';
 import { User } from 'src/app/shared/models/user.model';
@@ -32,6 +32,10 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   ngOnDestroy (): void {
     this.subscriptions.unsubscribe();
+  }
+
+  get emailControl (): FormControl {
+    return this.form.get('email') as FormControl;
   }
 
   public onSubmit () {

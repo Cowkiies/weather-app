@@ -23,7 +23,7 @@ namespace weather_api.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public IQueryable<UserDTO> GetUser()
+        public IQueryable<UserDTO> GetUsers()
         {
             return from user in _context.User
                    select MapFromUserToDTO(user);
@@ -40,19 +40,21 @@ namespace weather_api.Controllers
                 return NotFound();
             }
 
-            return user;
+            return MapFromUserToDTO(user);
         }
 
         // PUT: api/Users/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> PutUser(int id, User newUser)
         {
-            if (id != user.Id)
+            if (id != newUser.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(user).State = EntityState.Modified;
+            string hashed = PasswordHasher.HashPassword(newUser.Password, Convert.FromBase64String(newUser.Salt));
+            newUser.Password = hashed;
+            _context.Entry(newUser).State = EntityState.Modified;
 
             try
             {
@@ -111,14 +113,7 @@ namespace weather_api.Controllers
 
         private static UserDTO MapFromUserToDTO(User user)
         {
-            return new()
-            {
-                Id = user.Id,
-                Username = user.Username,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email
-            };
+            return new(user.Id, user.Username, user.FirstName, user.LastName, user.Email);
         }
     }
 }

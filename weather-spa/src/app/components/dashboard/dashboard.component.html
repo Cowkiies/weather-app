@@ -9,7 +9,8 @@
         </ng-template>
     </p-menubar>
 </div>
-<div class="grid col-10 col-offset-1 p-2">
+
+<div class="grid col-10 col-offset-1 p-2" *ngIf="!showSpinner">
     <p-card class="p-0 pt-3 m-auto w-full">
         <div class="grid col-12">
             <h3 class="col-2 mb-0 mt-0 pl-5">
@@ -18,8 +19,8 @@
             <span class="col-6 col-offset-1">
                 <p-autoComplete [(ngModel)]="selectedCity" [suggestions]="filteredCities" inputStyleClass="w-full"
                     field="fullName" [minLength]="3" placeholder="Search for a city" [forceSelection]="true"
-                    (completeMethod)="search($event)" (onSelect)="onSelect($event)" [dropdown]="true" dropdownMode="current"
-                    [virtualScroll]="true" [autoHighlight]="true" appendTo="body">
+                    (completeMethod)="search($event)" (onSelect)="onSelect($event)" [dropdown]="true"
+                    dropdownMode="current" [virtualScroll]="true" [autoHighlight]="true" appendTo="body">
                 </p-autoComplete>
             </span>
         </div>
@@ -38,4 +39,10 @@
             </p-tabPanel>
         </p-tabView>
     </p-card>
+</div>
+
+<div class="grid col-12 justify-content-center align-content-center h-screen">
+    <div *ngIf="showSpinner">
+        <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
+    </div>
 </div>

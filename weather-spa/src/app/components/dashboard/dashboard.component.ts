@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public cityList: City[];
   public filteredCities: City[];
   public selectedCity: any;
+  public showSpinner: boolean = true;
 
   private subscriptions: Subscription;
   constructor (
@@ -36,7 +37,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.weatherService.getCityList().subscribe((list: City[]) => {
         this.cityList = list;
-        console.log(list);
       })
     );
   }
@@ -73,7 +73,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.oneHourWeather = data.hourly[0];
         this.twoDaysWeather = data.daily[0];
         this.sevenDaysWeather = data.daily[1];
-        console.log(data);
+        this.showSpinner = false;
       })
     );
   }

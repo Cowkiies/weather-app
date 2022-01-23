@@ -14,5 +14,13 @@ namespace weather_api.Models
         public string LastName{ get; set; }
         public string Email { get; set; }
 
+        public UserDTO(int Id, string Username, string FirstName, string LastName, string Email)
+        {
+            this.Id = Id;
+            this.Username = Username;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.Email = Email;
+        }
     }
 }

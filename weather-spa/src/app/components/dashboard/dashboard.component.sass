@@ -10,15 +10,18 @@
 :host ::ng-deep .p-autocomplete
     width: 100%
 
-// :host ::ng-deep .p-tabview 
-//     padding: .25em
-//     text-align: center
+:host ::ng-deep .custom-spinner .p-progress-spinner-circle 
+  animation: custom-progress-spinner-dash 1.5s ease-in-out infinite, custom-progress-spinner-color 6s ease-in-out infinite
 
-// :host ::ng-deep .p-tabview .p-tabview-nav li 
-//     list-style: none
-//     float: none
-//     position: relative
-//     margin: 0 .125em 1px 0
-//     padding: 0
-//     white-space: nowrap
-//     display: inline-block!important
+
+@keyframes custom-progress-spinner-color 
+  100%,
+  0% 
+    stroke: rgb(75, 192, 192)
+  40% 
+    stroke: rgb(75, 192, 192)
+  66% 
+    stroke: rgb(75, 192, 192)
+  80%,
+  90% 
+    stroke: rgb(75, 192, 192)
