@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageService } from 'primeng/api';
@@ -17,6 +17,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PrimengModule } from './primeng.module';
 import { SignupComponent } from './components/signup/signup.component';
+import { ForecastComponent } from './components/forecast/forecast.component';
+import { PipeModule } from './shared/pipes/pipe.module';
 
 @NgModule({
   declarations: [
@@ -26,15 +28,18 @@ import { SignupComponent } from './components/signup/signup.component';
     DashboardComponent,
     HeaderComponent,
     FooterComponent,
-    SignupComponent
+    SignupComponent,
+    ForecastComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    PrimengModule
+    PrimengModule,
+    PipeModule
   ],
   providers: [
     AuthGuard,

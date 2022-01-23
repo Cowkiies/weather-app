@@ -1,0 +1,69 @@
+<div class="grid col-12">
+    <div class="col-7">
+        <div class="w-full flex justify-content-between flex-wrap pl-4 pr-4">
+            <div>
+                <span class="mb-0 text-7xl font-bold">
+                    {{ isObject(data?.temp) ? $any(data?.temp).min : data?.temp }}°C
+                </span>
+                <h3 class="mt-1 font-bold">
+                    {{ data ? data.weather[0].main : '' }}
+                </h3>
+            </div>
+
+            <div>
+                <img *ngIf="data && data.weather"
+                    src="http://openweathermap.org/img/wn/{{ data.weather[0].icon }}@2x.png"
+                    alt="{{ data.weather[0].description }}">
+            </div>
+        </div>
+    </div>
+    <div class="col-4 col-offset-1">
+        <div class="text-2xl pb-3 text-center">
+            <i class="wi wi-sunrise"></i><span> Sunrise time: {{ data?.sunrise | fromUnixEpochToDate | fromIsoDateToTime
+                }}</span>
+        </div>
+        <div class="text-2xl pb-3 text-center">
+            <i class="wi wi-sunset"></i><span> Sunset time: {{ data?.sunset | fromUnixEpochToDate | fromIsoDateToTime
+                }}</span>
+        </div>
+        <div class="text-2xl pb-3 text-center">
+            <i class="wi wi-barometer"></i><span> Pressure: {{ data?.pressure }} mbar</span>
+        </div>
+        <div class="text-2xl pb-3 text-center">
+            <i class="wi wi-humidity"></i><span> Humidity {{ data?.humidity }}%</span>
+        </div>
+    </div>
+</div>
+<div>
+    <div>
+        <span>wind: <i class="wi wi-wind towards-{{ closestWindDeg(data?.wind_deg) }}-deg"></i></span>
+    </div>
+    <div>
+        <span>
+            <i class="wi wi-wind-beaufort-{{findBeauortWindForce(data?.wind_speed)}}"></i> {{ data?.wind_speed }}km/h
+        </span>
+    </div>
+</div>
+<!-- <div>
+    
+    sunrise: 
+</div>
+
+<div>
+</div>
+
+<div>
+   temp: 
+</div>
+
+<div>
+    forecast: {{ data ? data.weather[0].main  : '' }}
+</div>
+
+<div>
+    pressure: {{ data?.pressure }}
+</div>
+
+<div>
+    humidity: {{ data?.humidity }}%
+</div> -->

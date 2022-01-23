@@ -50,8 +50,9 @@ namespace weather_api.Controllers
             {
                 return Unauthorized();
             }
-
-            var response = await Client.GetAsync($"data/2.5/onecall?lat=33.44&lon=-94.04&exclude=minutely&appid={apiKey}");
+            string lat = HttpContext.Request.Query["lat"].ToString();
+            string lon = HttpContext.Request.Query["lon"].ToString();
+            var response = await Client.GetAsync($"data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely&units=metric&appid={apiKey}");
             var content = await response.Content.ReadAsStringAsync();
             var jzon = JsonConvert.DeserializeObject<Forecast>(content);
             return Ok(jzon);

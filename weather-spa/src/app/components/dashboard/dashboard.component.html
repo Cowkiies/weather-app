@@ -1,1 +1,39 @@
-<p>dashboard works!</p>
+<div class="grid col-10 col-offset-1">
+    <p-menubar class="w-full">
+        <ng-template pTemplate="start">
+            <h2 class="m-0 ml-3">Weather App</h2>
+        </ng-template>
+        <ng-template pTemplate="end">
+            <button pButton label="Sign out" icon="pi pi-sign-out"
+                class="p-button-outlined p-button-warning p-button-rounded" (click)="logout()"></button>
+        </ng-template>
+    </p-menubar>
+</div>
+<div class="grid col-10 col-offset-1 p-2">
+    <p-card class="p-0 pt-3 m-auto w-full">
+        <div class="grid col-12">
+            <span class="p-input-icon-left col-6 col-offset-3">
+                <i class="pi pi-search"></i>
+                <p-autoComplete [(ngModel)]="selectedCity" [suggestions]="filteredCities" inputStyleClass="w-full"
+                    field="fullName" [minLength]="3" placeholder="Search for a city" [forceSelection]="true"
+                    (completeMethod)="search($event)" (onSelect)="onSelect($event)" [dropdown]="true" dropdownMode="current"
+                    [virtualScroll]="true" [autoHighlight]="true" appendTo="body">
+                </p-autoComplete>
+            </span>
+        </div>
+        <p-tabView class="p-0 m-0">
+            <p-tabPanel header="Current Weather">
+                <app-forecast [data]="currentWeather"></app-forecast>
+            </p-tabPanel>
+            <p-tabPanel header="1 Hour Forecast">
+                <app-forecast [data]="oneHourWeather"></app-forecast>
+            </p-tabPanel>
+            <p-tabPanel header="2 Day Forecast">
+                <app-forecast [data]="twoDaysWeather"></app-forecast>
+            </p-tabPanel>
+            <p-tabPanel header="7 Day Forecast">
+                <app-forecast [data]="sevenDaysWeather"></app-forecast>
+            </p-tabPanel>
+        </p-tabView>
+    </p-card>
+</div>

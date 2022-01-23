@@ -6,7 +6,9 @@ import { CardModule } from 'primeng/card';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
-
+import { MenubarModule } from 'primeng/menubar';
+import { TabViewModule } from 'primeng/tabview';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 @NgModule({
   exports: [
     InputTextModule,
@@ -15,7 +17,10 @@ import { ToastModule } from 'primeng/toast';
     CardModule,
     MessagesModule,
     MessageModule,
-    ToastModule
+    ToastModule,
+    MenubarModule,
+    TabViewModule,
+    AutoCompleteModule
   ]
 })
 export class PrimengModule { }
