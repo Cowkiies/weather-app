@@ -12,7 +12,7 @@ Run `dotnet tool install --global dotnet-ef` to install all the requiered tool,
 and `dotnet ef database update` to create the tables in the database.
 
 # Angular CLI
-Open bash at the root of the Angular project and run ``npm i` then once done run `ng serve`.
+Open bash at the root of the Angular project and run `npm i` then once done run `ng serve`.
 
 You can now access http://localhost:4200/ .
 
