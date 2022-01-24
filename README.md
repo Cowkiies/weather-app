@@ -62,5 +62,6 @@ Response:
 ## Weather
 ### Get
 Must include an Authorization header with value `Bearer jwt_token`.
+
 `/api/weather?lon={longitude}&lat={latitude}` to get weather data from the location with given latitude and longitude.
 
