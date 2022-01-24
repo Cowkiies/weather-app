@@ -8,7 +8,7 @@ using weather_api.Data;
 namespace weather_api.Migrations
 {
     [DbContext(typeof(WeatherDbContext))]
-    [Migration("20220119200928_Initial")]
+    [Migration("20220124085659_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
